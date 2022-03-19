@@ -22,5 +22,7 @@ The following **bonus** features are implemented:
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
+
+
 ![Simulator Screen Recording - iPhone 13 Pro Max - 2022-03-19 at 14 11 29](https://user-images.githubusercontent.com/73564856/159135217-2a905d46-45dc-474a-b7cf-775455decd8b.gif)
 
