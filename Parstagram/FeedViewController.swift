@@ -12,6 +12,7 @@ import MessageInputBar
 
 class FeedViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MessageInputBarDelegate {
 
+
     @IBOutlet weak var tableView: UITableView!
     let commentBar = MessageInputBar()
     var showsCommentBar = false
@@ -21,7 +22,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     var selectedPost: PFObject!
     
     override func viewDidLoad() {
-        
+    //Comment line uses MessageInputBar to create a functional comment section
         commentBar.inputTextView.placeholder = "Add a comment..."
         commentBar.sendButton.title = "Post"
         commentBar.delegate = self
@@ -30,7 +31,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         tableView.delegate = self
         tableView.dataSource = self
-        
+    
+        //Dismiss keyboard on swipe downward
         tableView.keyboardDismissMode = .interactive
         
         let center = NotificationCenter.default
@@ -53,10 +55,12 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
     override var canBecomeFirstResponder: Bool {
         return showsCommentBar
     }
-    
+
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    //Query some posts with author, comments along with their authors
         let query = PFQuery(className: "Posts")
         query.includeKeys(["author", "comments", "comments.author"])
         query.limit = 20
@@ -69,6 +73,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+
     func messageInputBar(_ inputBar: MessageInputBar, didPressSendButtonWith text: String) {
         //Create the comment
         let comment = PFObject(className: "Comments")
@@ -111,6 +116,8 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         return posts.count
     }
     
+    
+    //Tableview laoded with posts
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let post = posts[indexPath.section]
@@ -147,7 +154,11 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             return cell
         }
+        
+        
+        
     }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = posts[indexPath.section]
@@ -165,6 +176,7 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    //When logout is pressed, send logout user and back to main menu
     @IBAction func onLogoutButton(_ sender: Any) {
         
         PFUser.logOut()
@@ -177,16 +189,5 @@ class FeedViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

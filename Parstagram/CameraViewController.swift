@@ -19,6 +19,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         // Do any additional setup after loading the view.
     }
     
+    //When submit button is pressed, commentfield, phoro, and Username are saved into the parse database to be loaded into the home timeline.
     @IBAction func onSubmitButton(_ sender: Any) {
         let post = PFObject(className: "Posts")
         
@@ -41,6 +42,7 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
             }
         }
     
+    //On touch of camera button - Either load camera button if available. If unavailable laod photo library
     @IBAction func onCameraButton(_ sender: Any) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -54,6 +56,9 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         present(picker, animated: true, completion: nil)
     }
     
+    
+    
+    // Image picker when camera cannot be loaded
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as! UIImage
         
@@ -64,14 +69,5 @@ class CameraViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         dismiss(animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
     }
-    */
-
-}
