@@ -13,11 +13,6 @@ The following **required** functionality is completed:
 - [X] User can view comments on a post. (3pts)
 - [X] User can add a new comment. (5pts)
 
-The following **bonus** features are implemented:
-
-- [ ] User can add a profile picture. (2pts)
-- [ ] Profile pictures are shown for posts and comments. (2pts)
-
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
@@ -44,10 +39,6 @@ The following **required** functionality is completed:
 - [X] User can take a photo, add a caption, and post it to the server. (3pt)
 - [X] User can view the last 20 posts. (4pts)
 
-The following **bonus** features are implemented:
-
-- [ ] User can pull to refresh. (1pt)
-- [ ] User can load past posts infinitely. (2pts)
 
 ## Video Walkthrough
 
